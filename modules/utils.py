@@ -5,7 +5,7 @@ import unicodedata
 
 from os.path import isfile, join
 from typing import List, Dict
-import user_object_defined as udt
+import modules.user_defined as udt
 
 def getAllFolderPath(ppath: str) -> (List[str]):
     """
@@ -71,7 +71,7 @@ def labelRating(pdataframe: udt.Dataframe, pthreshold:int = 4) -> (udt.Dataframe
     return pdataframe
 
 
-def buildDictionaryFromFile(ppath: str, psuffix: bool = False) -> (Dict[str, str]):
+def buildDictionaryFromFile(ppath: str, psuffix: bool) -> (Dict[str, str]):
     """
     Dùng để xây dựng một từ điển tử filepath
 
@@ -84,7 +84,7 @@ def buildDictionaryFromFile(ppath: str, psuffix: bool = False) -> (Dict[str, str
     """
     d = {}
     
-    with open(ppath) as rows:
+    with open(ppath, 'r', encoding="utf8") as rows:
         if not psuffix:
             for row in rows:
                 prefix, suffix = row.strip().split(',')

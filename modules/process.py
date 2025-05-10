@@ -3,8 +3,21 @@ import emojis
 import unicodedata
 
 from typing import List, Dict
-import regex as RegPattern
-import user_object_defined as udt
+import modules.regex as RegPattern
+import modules.user_defined as udt
+
+def removeSpace(ptext: str) -> (str):
+    """
+    Dùng xóa các khoảng trắng thừa trong ptext
+
+    Args:
+        ptext (str): comment
+
+    Returns:
+        [str]: comment đã xóa các khoảng trắng thừa
+    """
+    ptext = ptext.replace("\n", " ")
+    return re.sub(r'\s+', ' ', ptext)
 
 def containsURL(ptext: str) -> (int):
     """
